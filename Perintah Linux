@@ -1,0 +1,111 @@
+# 💻 Linux Terminal Cheat Sheet
+
+## 📁 Navigasi Folder
+$ cd /path/to/folder       # Masuk ke direktori tujuan
+$ cd ..                   # Naik satu level direktori
+$ ls                      # Menampilkan isi direktori
+$ ls -l                   # Menampilkan isi direktori dengan detail
+$ ls -a                   # Menampilkan semua file termasuk hidden (dimulai dengan .)
+$ pwd                     # Menampilkan path direktori saat ini
+
+---
+
+## 🗂️ Manipulasi Direktori
+$ mkdir /path/to/folder    # Membuat direktori baru
+$ rmdir /path/to/folder    # Menghapus direktori kosong
+$ rm -r /path/to/folder    # Menghapus direktori beserta isinya (recursive)
+$ rm -rf /path/to/folder   # Menghapus direktori beserta isinya secara paksa
+
+---
+
+## 📄 Manipulasi File
+$ cp /path/source.file /path/destination/   # Menyalin file
+$ mv /path/source.file /path/destination/   # Memindahkan atau mengganti nama file
+$ rm /path/file                             # Menghapus file
+$ rm -f /path/file                          # Menghapus file secara paksa tanpa konfirmasi
+$ rename 's/oldname/newname/' *.txt         # Mengganti nama banyak file (perl regex)
+
+---
+
+## 📝 Membuat & Mengedit File
+$ echo "teks" > file.txt           # Membuat file baru atau overwrite dengan teks
+$ echo "teks tambahan" >> file.txt # Menambahkan teks ke file (append)
+$ touch file.txt                   # Membuat file kosong atau update timestamp
+$ cat > file.txt                   # Membuat file baru, isi dari stdin, ctrl+d untuk selesai
+$ nano file.txt                    # Membuka file di editor Nano (terminal)
+$ vi file.txt                     # Membuka file di editor Vi/Vim
+$ less file.txt                   # Menampilkan isi file dengan navigasi
+$ head file.txt                   # Menampilkan 10 baris pertama file
+$ tail file.txt                   # Menampilkan 10 baris terakhir file
+
+---
+
+## 🌐 Jaringan
+$ ifconfig                      # Menampilkan konfigurasi IP (kadang perlu install net-tools)
+$ ip addr show                  # Menampilkan konfigurasi IP (lebih modern)
+$ ping alamat.com               # Mengecek koneksi ke host
+$ traceroute alamat.com         # Melacak rute ke host
+$ netstat -tuln                 # Menampilkan port yang terbuka dan aktif
+$ nslookup domain.com           # Mengetahui IP dari domain
+$ dig domain.com                # Query DNS (lebih detail dari nslookup)
+$ arp -a                       # Menampilkan cache ARP lokal
+$ iwconfig                     # Menampilkan info jaringan wireless (WiFi)
+$ nmcli device wifi list       # Menampilkan jaringan WiFi yang tersedia (NetworkManager)
+$ nmcli connection show        # Menampilkan koneksi jaringan yang aktif
+
+---
+
+## 🧠 Informasi Sistem
+$ uname -a                    # Informasi kernel dan sistem
+$ hostname                    # Nama komputer
+$ whoami                      # User yang sedang login
+$ top                        # Melihat proses yang berjalan secara real-time
+$ ps aux                     # Menampilkan daftar proses lengkap
+$ kill PID                   # Menghentikan proses dengan PID tertentu
+$ kill -9 PID                # Memaksa menghentikan proses dengan PID tertentu
+$ free -h                    # Menampilkan penggunaan memori dalam format mudah dibaca
+$ df -h                      # Menampilkan penggunaan disk dalam format mudah dibaca
+$ uptime                     # Lama sistem menyala
+
+---
+
+## 👥 User & Grup
+$ who                        # Menampilkan user yang sedang login
+$ id                         # Menampilkan ID user dan grup
+$ users                      # Menampilkan daftar user yang login
+$ adduser username           # Menambah user baru
+$ passwd username            # Mengubah password user
+$ deluser username           # Menghapus user
+$ groupadd groupname         # Membuat grup baru
+$ usermod -aG groupname username  # Menambahkan user ke grup
+$ groups username            # Menampilkan grup user
+
+---
+
+## 🔐 Akses File & Permission
+$ ls -l                      # Menampilkan hak akses file/folder
+$ chmod 755 file             # Mengubah permission file/folder (rwxr-xr-x)
+$ chown user:group file      # Mengubah pemilik dan grup file/folder
+$ chown -R user:group folder # Mengubah pemilik dan grup secara rekursif
+$ stat file                  # Menampilkan detail file termasuk permission
+$ getfacl file               # Menampilkan ACL (Access Control List)
+$ setfacl -m u:username:rwx file  # Memberi hak akses ACL pada user
+
+---
+
+## 🛠️ Utilitas Tambahan
+$ clear                      # Membersihkan layar terminal
+$ echo "teks"                # Menampilkan teks di terminal
+$ xdg-open file_or_url       # Membuka file atau URL dengan aplikasi default (Linux GUI)
+$ exit                       # Keluar dari terminal atau sesi SSH
+$ tree                       # Menampilkan struktur folder (install dulu jika belum ada)
+$ man command                # Menampilkan manual/help command
+$ history                    # Menampilkan riwayat perintah yang dijalankan
+$ alias name='command'       # Membuat alias perintah untuk memudahkan
+
+---
+
+# 📌 Tips
+# - Gunakan TAB untuk autocomplete path dan perintah.
+# - Gunakan Ctrl+C untuk membatalkan proses yang sedang berjalan.
+# - Gunakan Ctrl+R untuk pencarian perintah dalam history.
