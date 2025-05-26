@@ -1,0 +1,33 @@
+# Update dan install dependensi build
+- sudo apt update
+- sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev \ libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget \ libbz2-dev liblzma-dev uuid-dev
+
+# Pindah ke folder Downloads (sesuaikan kalau beda)
+- cd ~/Downloads
+
+# Ekstrak file Python 3.12 yang sudah didownload
+- tar -xf Python-3.12.3.tgz
+- cd Python-3.12.3
+
+# Compile dan install Python 3.12 tanpa overwrite Python bawaan
+- ./configure --enable-optimizations
+- make -j$(nproc)
+- sudo make altinstall
+
+# Cek versi Python 3.12
+- python3.12 --version
+
+# Pasang pip untuk Python 3.12 dan upgrade pip
+- python3.12 -m ensurepip --upgrade
+- python3.12 -m pip install --upgrade pip
+
+# Contoh install paket dengan pip di Python 3.12
+- python3.12 -m pip install <nama-package>
+
+# (Opsional) Buat virtual environment dengan Python 3.12
+- python3.12 -m venv myenv312
+- source myenv312/bin/activate
+- pip install <nama-package>
+
+# Keluar dari virtual environment
+- deactivate
