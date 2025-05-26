@@ -17,6 +17,9 @@
 # Cek versi Python 3.12
 - python3.12 --version
 
+#  Cek versi pip untuk Python 3.12
+- python3.12 -m pip --version
+
 # Pasang pip untuk Python 3.12 dan upgrade pip
 - python3.12 -m ensurepip --upgrade
 - python3.12 -m pip install --upgrade pip
