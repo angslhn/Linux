@@ -1,0 +1,5 @@
+# Mengaktifkan Lenovo Battery Conservation Mode (batas isi baterai 59%)
+- echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
+
+# Menonaktifkan Lenovo Battery Conservation Mode (baterai bisa isi sampai 100%)
+- echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
