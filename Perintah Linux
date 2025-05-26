@@ -105,7 +105,96 @@ $ alias name='command'       # Membuat alias perintah untuk memudahkan
 
 ---
 
-# 📌 Tips
-# - Gunakan TAB untuk autocomplete path dan perintah.
-# - Gunakan Ctrl+C untuk membatalkan proses yang sedang berjalan.
-# - Gunakan Ctrl+R untuk pencarian perintah dalam history.
+## 📦 Manajemen Paket Debian/Ubuntu
+$ sudo apt update                  # Update daftar paket
+$ sudo apt upgrade                 # Upgrade semua paket terinstall
+$ sudo apt install package-name    # Install paket baru
+$ sudo dpkg -l                     # Cek semua paket terinstall
+$ sudo dpkg -l | package-name      # Cek salah satu paket yang terinstall
+$ sudo apt remove package-name     # Menghapus paket
+$ sudo apt autoremove              # Menghapus paket yang tidak dibutuhkan
+$ apt search keyword               # Cari paket
+$ apt show package-name            # Info detail paket
+
+---
+
+## 💽 Disk dan Partisi
+
+$ lsblk                          # Menampilkan perangkat blok dan partisi
+$ fdisk -l                      # Menampilkan tabel partisi (perlu sudo)
+$ sudo fdisk /dev/sdX           # Mengelola partisi (X sesuaikan disk)
+$ mount /dev/sdX1 /mnt          # Mount partisi ke folder /mnt
+$ umount /mnt                   # Unmount partisi
+$ df -h                         # Menampilkan penggunaan disk
+$ parted /dev/sdX               # Manajemen partisi interaktif
+$ blkid                         # Melihat UUID partisi
+$ sudo mkfs.ext4 /dev/sdX1      # Membuat filesystem ext4 pada partisi
+
+---
+
+## ⚙️ Pengelolaan Service & Proses Lanjutan
+
+$ systemctl status service-name         # Cek status service
+$ systemctl start service-name          # Menyalakan service
+$ systemctl stop service-name           # Mematikan service
+$ systemctl restart service-name        # Restart service
+$ systemctl enable service-name         # Aktifkan service saat boot
+$ systemctl disable service-name        # Nonaktifkan service saat boot
+$ journalctl -xe                        # Lihat log sistem terbaru
+$ journalctl -u service-name            # Lihat log service tertentu
+$ ps aux | grep process-name            # Cari proses tertentu
+
+---
+
+## 🌱 Variabel Lingkungan & Konfigurasi Shell
+
+$ echo $PATH                      # Menampilkan variabel PATH
+$ export VARIABEL="nilai"         # Menambah atau mengubah variabel lingkungan sementara
+$ echo $VARIABEL                  # Menampilkan isi variabel
+$ env                            # Menampilkan semua variabel lingkungan
+$ printenv                       # Sama seperti env
+$ unset VARIABEL                 # Menghapus variabel lingkungan
+$ source ~/.bashrc               # Reload konfigurasi shell (bash)
+$ nano ~/.bashrc                 # Edit konfigurasi shell (bash)
+$ ~/.profile                    # File konfigurasi shell yang dieksekusi saat login
+
+---
+
+## 🔥 Pengelolaan Firewall
+
+### UFW (Uncomplicated Firewall) - Debian/Ubuntu
+$ sudo ufw status                # Cek status firewall
+$ sudo ufw enable                # Mengaktifkan firewall
+$ sudo ufw disable               # Mematikan firewall
+$ sudo ufw allow 80/tcp          # Membuka port 80 (HTTP)
+$ sudo ufw deny 22/tcp           # Menutup port 22 (SSH)
+$ sudo ufw status verbose        # Status dengan detail aturan
+
+### iptables (firewall lebih rendah & advanced)
+$ sudo iptables -L               # Melihat aturan firewall saat ini
+$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT  # Izinkan port 80 masuk
+$ sudo iptables -A INPUT -p tcp --dport 22 -j DROP    # Blok port 22
+$ sudo iptables -F               # Menghapus semua aturan firewall
+$ sudo iptables-save > /etc/iptables/rules.v4  # Simpan aturan
+
+---
+
+## 🔍 Tools Monitoring & Debugging
+
+$ strace -p PID                 # Melacak system call proses
+$ lsof -i :port                # Menampilkan proses yang menggunakan port tertentu
+$ lsof /path/to/file            # Menampilkan proses yang membuka file tertentu
+$ tcpdump -i eth0              # Menangkap paket jaringan di interface eth0 (root)
+$ dstat                       # Statistik sistem secara real-time (cpu, disk, network)
+$ iostat                      # Statistik penggunaan CPU dan disk I/O
+$ vmstat                      # Statistik memori dan proses
+$ htop                        # Task manager interaktif (lebih bagus dari top)
+
+---
+
+# 📌 Tips Tambahan
+# - Gunakan sudo untuk perintah yang butuh hak akses root
+# - Gunakan tab untuk autocomplete perintah dan path
+# - Gunakan man <command> untuk baca manual perintah
+# - Gunakan Ctrl+C untuk membatalkan perintah berjalan
+# - Untuk scripting, selalu test script di environment aman sebelum produksi
