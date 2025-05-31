@@ -1,12 +1,12 @@
 # 💻 Linux Terminal Cheat Sheet
 
 ## 📁 Navigasi Folder
-$ cd /path/to/folder       # Masuk ke direktori tujuan
-$ cd ..                   # Naik satu level direktori
-$ ls                      # Menampilkan isi direktori
-$ ls -l                   # Menampilkan isi direktori dengan detail
-$ ls -a                   # Menampilkan semua file termasuk hidden (dimulai dengan .)
-$ pwd                     # Menampilkan path direktori saat ini
+$ cd /path/to/folder        # Masuk ke direktori tujuan
+$ cd ..                     # Naik satu level direktori
+$ ls                        # Menampilkan isi direktori
+$ ls -l                     # Menampilkan isi direktori dengan detail
+$ ls -a                     # Menampilkan semua file termasuk hidden (dimulai dengan .)
+$ pwd                       # Menampilkan path direktori saat ini
 
 ---
 
@@ -28,15 +28,15 @@ $ rename 's/oldname/newname/' *.txt         # Mengganti nama banyak file (perl r
 ---
 
 ## 📝 Membuat & Mengedit File
-$ echo "teks" > file.txt           # Membuat file baru atau overwrite dengan teks
-$ echo "teks tambahan" >> file.txt # Menambahkan teks ke file (append)
-$ touch file.txt                   # Membuat file kosong atau update timestamp
-$ cat > file.txt                   # Membuat file baru, isi dari stdin, ctrl+d untuk selesai
-$ nano file.txt                    # Membuka file di editor Nano (terminal)
-$ vi file.txt                     # Membuka file di editor Vi/Vim
-$ less file.txt                   # Menampilkan isi file dengan navigasi
-$ head file.txt                   # Menampilkan 10 baris pertama file
-$ tail file.txt                   # Menampilkan 10 baris terakhir file
+$ echo "teks" > file.txt            # Membuat file baru atau overwrite dengan teks
+$ echo "teks tambahan" >> file.txt  # Menambahkan teks ke file (append)
+$ touch file.txt                    # Membuat file kosong atau update timestamp
+$ cat > file.txt                    # Membuat file baru, isi dari stdin, ctrl+d untuk selesai
+$ nano file.txt                     # Membuka file di editor Nano (terminal)
+$ vi file.txt                       # Membuka file di editor Vi/Vim
+$ less file.txt                     # Menampilkan isi file dengan navigasi
+$ head file.txt                     # Menampilkan 10 baris pertama file
+$ tail file.txt                     # Menampilkan 10 baris terakhir file
 
 ---
 
@@ -48,17 +48,17 @@ $ traceroute alamat.com         # Melacak rute ke host
 $ netstat -tuln                 # Menampilkan port yang terbuka dan aktif
 $ nslookup domain.com           # Mengetahui IP dari domain
 $ dig domain.com                # Query DNS (lebih detail dari nslookup)
-$ arp -a                       # Menampilkan cache ARP lokal
-$ iwconfig                     # Menampilkan info jaringan wireless (WiFi)
-$ nmcli device wifi list       # Menampilkan jaringan WiFi yang tersedia (NetworkManager)
-$ nmcli connection show        # Menampilkan koneksi jaringan yang aktif
+$ arp -a                        # Menampilkan cache ARP lokal
+$ iwconfig                      # Menampilkan info jaringan wireless (WiFi)
+$ nmcli device wifi list        # Menampilkan jaringan WiFi yang tersedia (NetworkManager)
+$ nmcli connection show         # Menampilkan koneksi jaringan yang aktif
 
 ---
 
 ## 🧠 Informasi Sistem
-$ uname -a                    # Informasi kernel dan sistem
-$ hostname                    # Nama komputer
-$ whoami                      # User yang sedang login
+$ uname -a                   # Informasi kernel dan sistem
+$ hostname                   # Nama komputer
+$ whoami                     # User yang sedang login
 $ top                        # Melihat proses yang berjalan secara real-time
 $ ps aux                     # Menampilkan daftar proses lengkap
 $ kill PID                   # Menghentikan proses dengan PID tertentu
@@ -70,15 +70,15 @@ $ uptime                     # Lama sistem menyala
 ---
 
 ## 👥 User & Grup
-$ who                        # Menampilkan user yang sedang login
-$ id                         # Menampilkan ID user dan grup
-$ users                      # Menampilkan daftar user yang login
-$ adduser username           # Menambah user baru
-$ passwd username            # Mengubah password user
-$ deluser username           # Menghapus user
-$ groupadd groupname         # Membuat grup baru
-$ usermod -aG groupname username  # Menambahkan user ke grup
-$ groups username            # Menampilkan grup user
+$ who                               # Menampilkan user yang sedang login
+$ id                                # Menampilkan ID user dan grup
+$ users                             # Menampilkan daftar user yang login
+$ adduser username                  # Menambah user baru
+$ passwd username                   # Mengubah password user
+$ deluser username                  # Menghapus user
+$ groupadd groupname                # Membuat grup baru
+$ usermod -aG groupname username    # Menambahkan user ke grup
+$ groups username                   # Menampilkan grup user
 
 ---
 
@@ -111,7 +111,9 @@ $ sudo apt upgrade                 # Upgrade semua paket terinstall
 $ sudo apt install package-name    # Install paket baru
 $ sudo dpkg -l                     # Cek semua paket terinstall
 $ sudo dpkg -l | package-name      # Cek salah satu paket yang terinstall
+$ sudo dpkg --purge package-name   # Menghapus paket
 $ sudo apt remove package-name     # Menghapus paket
+$ sudo apt purge package-name      # Menghapus paket beserta configurasinya
 $ sudo apt autoremove              # Menghapus paket yang tidak dibutuhkan
 $ apt search keyword               # Cari paket
 $ apt show package-name            # Info detail paket
@@ -120,7 +122,7 @@ $ apt show package-name            # Info detail paket
 
 ## 💽 Disk dan Partisi
 
-$ lsblk                          # Menampilkan perangkat blok dan partisi
+$ lsblk                         # Menampilkan perangkat blok dan partisi
 $ fdisk -l                      # Menampilkan tabel partisi (perlu sudo)
 $ sudo fdisk /dev/sdX           # Mengelola partisi (X sesuaikan disk)
 $ mount /dev/sdX1 /mnt          # Mount partisi ke folder /mnt
@@ -151,12 +153,12 @@ $ ps aux | grep process-name            # Cari proses tertentu
 $ echo $PATH                      # Menampilkan variabel PATH
 $ export VARIABEL="nilai"         # Menambah atau mengubah variabel lingkungan sementara
 $ echo $VARIABEL                  # Menampilkan isi variabel
-$ env                            # Menampilkan semua variabel lingkungan
-$ printenv                       # Sama seperti env
-$ unset VARIABEL                 # Menghapus variabel lingkungan
-$ source ~/.bashrc               # Reload konfigurasi shell (bash)
-$ nano ~/.bashrc                 # Edit konfigurasi shell (bash)
-$ ~/.profile                    # File konfigurasi shell yang dieksekusi saat login
+$ env                             # Menampilkan semua variabel lingkungan
+$ printenv                        # Sama seperti env
+$ unset VARIABEL                  # Menghapus variabel lingkungan
+$ source ~/.bashrc                # Reload konfigurasi shell (bash)
+$ nano ~/.bashrc                  # Edit konfigurasi shell (bash)
+$ ~/.profile                      # File konfigurasi shell yang dieksekusi saat login
 
 ---
 
@@ -182,13 +184,13 @@ $ sudo iptables-save > /etc/iptables/rules.v4  # Simpan aturan
 ## 🔍 Tools Monitoring & Debugging
 
 $ strace -p PID                 # Melacak system call proses
-$ lsof -i :port                # Menampilkan proses yang menggunakan port tertentu
+$ lsof -i :port                 # Menampilkan proses yang menggunakan port tertentu
 $ lsof /path/to/file            # Menampilkan proses yang membuka file tertentu
-$ tcpdump -i eth0              # Menangkap paket jaringan di interface eth0 (root)
-$ dstat                       # Statistik sistem secara real-time (cpu, disk, network)
-$ iostat                      # Statistik penggunaan CPU dan disk I/O
-$ vmstat                      # Statistik memori dan proses
-$ htop                        # Task manager interaktif (lebih bagus dari top)
+$ tcpdump -i eth0               # Menangkap paket jaringan di interface eth0 (root)
+$ dstat                         # Statistik sistem secara real-time (cpu, disk, network)
+$ iostat                        # Statistik penggunaan CPU dan disk I/O
+$ vmstat                        # Statistik memori dan proses
+$ htop                          # Task manager interaktif (lebih bagus dari top)
 
 ---
 
@@ -197,4 +199,3 @@ $ htop                        # Task manager interaktif (lebih bagus dari top)
 # - Gunakan tab untuk autocomplete perintah dan path
 # - Gunakan man <command> untuk baca manual perintah
 # - Gunakan Ctrl+C untuk membatalkan perintah berjalan
-# - Untuk scripting, selalu test script di environment aman sebelum produksi
