@@ -1,0 +1,56 @@
+### Semua Commnand pada Snap Pop OS
+
+# Perbarui daftar paket
+sudo apt update
+
+# Install snapd
+sudo apt install snapd -y
+
+# Aktifkan dan jalankan layanan snapd
+sudo systemctl enable --now snapd.socket
+
+# Buat symlink agar Snap berfungsi dengan benar
+sudo ln -s /var/lib/snapd/snap /snap
+
+# Verifikasi apakah Snap sudah terpasang
+snap version
+
+# Perintah untuk menginstal aplikasi menggunakan Snap
+sudo snap install <package-name>
+#
+ Perintah untuk menghapus aplikasi yang diinstal dengan Snap
+sudo snap remove <package-name>
+
+# Perintah untuk memperbarui aplikasi yang diinstal dengan Snap
+sudo snap refresh <package-name>
+
+# Perintah untuk mencari aplikasi yang tersedia di Snap Store
+snap find <package-name>
+
+# Perintah untuk melihat informasi tentang aplikasi yang diinstal
+snap info <package-name>
+
+# Perintah untuk melihat daftar aplikasi yang diinstal dengan Snap
+snap list
+
+# Perintah untuk melihat log dari aplikasi yang diinstal dengan Snap
+snap logs <package-name>
+
+# Perintah untuk mengaktifkan atau menonaktifkan aplikasi yang diinstal dengan Snap
+sudo snap enable <package-name>
+sudo snap disable <package-name>
+
+# Perintah untuk menginstal aplikasi dari channel tertentu (stable, candidate, beta, edge)
+sudo snap install <package-name> --channel=stable
+
+# Perintah untuk menginstal aplikasi dengan versi tertentu
+sudo snap install <package-name> --channel=3.0/stable
+#
+ Perintah untuk menginstal aplikasi dengan opsi tertentu
+sudo snap install <package-name> --classic
+
+# Perintah untuk menghapus semua aplikasi yang diinstal dengan Snap
+sudo snap remove --purge <package-name>
+
+# Perintah untuk menghapus semua aplikasi yang diinstal dengan Snap
+sudo snap remove --purge --all
