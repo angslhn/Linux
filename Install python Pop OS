@@ -10,8 +10,10 @@
 - cd Python-3.12.3
 
 # Compile dan install Python 3.12 tanpa overwrite Python bawaan
-- ./configure --enable-optimizations
-- make -j$(nproc)
+- ./configure --enable-optimizations 
+- make -j$(nproc) # Gunakan semua core CPU untuk mempercepat proses build
+
+# Install Python 3.12
 - sudo make altinstall
 
 # Cek versi Python 3.12
@@ -26,6 +28,12 @@
 
 # Contoh install paket dengan pip di Python 3.12
 - python3.12 -m pip install <nama-package>
+
+# Melihat daftar paket yang terpasang di Python 3.12
+- python3.12 -m pip list
+
+# Menghapus paket yang terpasang di Python 3.12
+- python3.12 -m pip uninstall <nama-package>
 
 # (Opsional) Buat virtual environment dengan Python 3.12
 - python3.12 -m venv myenv312
