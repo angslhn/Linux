@@ -1,0 +1,14 @@
+# Install MySQL ArchLinux
+- sudo pacman -S mariadb
+
+# Initialisasi Database
+- sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+# Menjalankan server MySQL
+- sudo systemctl start mariadb
+
+# Memberhentikan server MySQL
+- sudo systemctl stop mariadb
+
+# Berjalan otomatis server MySQL
+- sudo systemctl enable mariadb
