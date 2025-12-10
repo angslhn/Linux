@@ -2,8 +2,8 @@
 
 [Catatan]
 Berdasarkan pengalaman saya sendiri menginstall di laptop Lenovo Ideapad Slim 3, karena kebanyakan laptop saat ini telah menggunakan SSD Nvme sudah pasti
-langkah-langkah dibawah ini akan berhasil. Tetapi jangan lupa bahwa penginstallan Arch Linux harus menggunakan perlu terhubung dengan internet, lebih gampang
-menggunakan Ethernet atau jika menggunakan WiFi ataupun internet dari Smartphone bisa dengan menghubungkan melalui Penambatan USB.
+langkah-langkah dibawah ini akan berhasil. Tetapi jangan lupa bahwa penginstallan Arch Linux harus terhubung dengan internet, agar lebih mudah menggunakan
+Ethernet atau jika menggunakan WiFi ataupun internet dari Smartphone bisa dengan menghubungkan melalui Penambatan USB.
 
 ## Cek Partisi
 - lsblk
