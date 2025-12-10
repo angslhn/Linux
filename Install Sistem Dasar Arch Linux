@@ -1,0 +1,123 @@
+# Install Arch Linux  |  @angslhn
+
+[Catatan]
+Berdasarkan pengalaman saya sendiri menginstall di laptop Lenovo Ideapad Slim 3, karena kebanyakan laptop saat ini telah menggunakan SSD Nvme sudah pasti
+langkah-langkah dibawah ini akan berhasil. Tetapi jangan lupa bahwa penginstallan Arch Linux harus menggunakan perlu terhubung dengan internet, lebih gampang
+menggunakan Ethernet atau jika menggunakan WiFi ataupun internet dari Smartphone bisa dengan menghubungkan melalui Penambatan USB.
+
+## Cek Partisi
+- lsblk
+
+## Mengatur Partisi untuk Boot, Root, Home, Swap (Optional)
+- cfdisk 
+
+[Saran Alokasi]
+- Boot -> 0.5GB 
+- Root -> Min. 15GB 
+- Swap -> 4GB (Optional) 
+- Home -> Alokasikan Sisanya
+
+## Membuat Format Partisi Boot, Root, Home dan Swap (Optional)
+- mkfs.ext4 /dev/nvme0n1p2                  -> Root 
+- mkfs.fat -F 32 /dev/nvme0n1p1             -> Boot
+- mkfs.ext4 /dev/nvme0n1p3                  -> Home
+- mkswap /dev/nvme0n1p4                     -> Swap (Optional)
+
+## Mount Folder Sistem
+- mount /dev/nvme0n1p2 /mnt                 -> Root
+- mount --mkdir /dev/nvme0n1p1 /mnt/boot    -> Boot
+- mount --mkdir /dev/nvme0n1p3 /mnt/home    -> Home
+- swapon /dev/nvme0n1p4                     -> Swap (Optional)
+
+## Install Package Penting
+- pacstrap -K /mnt base base-devel efibootmgr git grub linux linux-firmware nano networkmanager sof-firmware
+
+### Install Package Untuk Processor AMD
+- pacstrap -K /mnt amd-ucode
+
+### Install Package Untuk Processor Intel
+- pacstrap -K /mnt intel-ucode
+
+## Mencatat Partisi Secara Permanen
+- genfstab -U /mnt >> /mnt/etc/fstab
+
+## Masuk ke Sistem Baru (Chroot)
+- arch-chroot /mnt
+
+## Atur Waktu
+- ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+
+## Sinkronisasi Waktu
+- hwclock --systohc
+
+## Buka Konfigurasi Locale
+- nano /etc/locale.gen
+
+## Hapus Tanda Komentar
+-> #en_US.UTF-8 UTF-8
+|
+|
+-> en_US.UTF-8 UTF-8
+
+## Atur Lokalisasi
+- locale-gen
+
+## Simpan Konfigurasi Bahasa
+- echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+
+## Atur Keyboard Layout
+- echo "KEYMAP=us" >> /etc/vconsole.conf
+
+## Atur Hostname
+- echo "<nama-host>" >> /etc/hostname
+
+## Atur Password Root
+- passwd
+
+## Cek Mode Bootloader
+- ls /sys/firmware/efi/efivars    ->   Jika muncul banyak file atau folder berarti adalah mode UEFI. Namun, jika tidak ada apapun berarti Bios/Legacy.
+
+## Install Mode UEFI
+- grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+
+## Install Mode Bios/Legacy
+- grub-install /dev/nvme0n1
+
+## Konfigurasi GRUB
+- grub-mkconfig -o /boot/grub/grub.cfg
+
+## Menghidupkan Internet
+- systemctl enable NetworkManager
+
+## Keluar dari Sistem Baru (Chroot)
+- exit
+
+## Unmount Semua Partisi
+- umount -R /mnt
+
+## Reboot
+- reboot
+
+## Buat Pengguna Baru (Direkomendasikan)
+- useradd -m -G wheel -s /bin/bash <nama-pengguna-baru>
+
+## Atur Password Pengguna Baru
+- passwd <nama-pengguna-baru>
+
+## Beri Izin Sudo
+- EDITOR=nano visudo
+
+## Hapus Tanda Komentar
+-> # %wheel ALL=(ALL:ALL) ALL
+|
+|
+-> %wheel ALL=(ALL:ALL) ALL
+
+## Mengganti Pengguna
+- su - <nama-pengguna-baru>
+
+## Memperbarui Sistem
+- sudo pacman -Syu
+
+[Catatan]
+Untuk penginstallan dasar Sistem Arch Linux telah berhasil, untuk tahap selanjutnya tampilan GUI bisa disesuaikan dengan selera kita.
